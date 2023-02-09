@@ -9,19 +9,19 @@ namespace BookStore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IBookStorage _bookStorage;
+        private readonly IPersonCheck _personCheck;
 
-        public HomeController(ILogger<HomeController> logger, IBookStorage bookStorage)
+        public HomeController(ILogger<HomeController> logger, IBookStorage bookStorage, IPersonCheck personCheck)
         {
             _logger = logger;
             _bookStorage = bookStorage;
+            _personCheck = personCheck;
         }
-
+       
         public IActionResult Index()
-        {
-            var books = _bookStorage.GetBooks();
-            ViewData["bookCollection"] = books;
+        {         
             return View();
-        }
+        }        
 
         public IActionResult Privacy()
         {

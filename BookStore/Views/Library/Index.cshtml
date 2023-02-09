@@ -1,0 +1,32 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Library";
+}
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название книги</th>
+                <th scope="col">Дата публикации</th>
+                <th scope="col">Забронирована</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <th scope="row">@book.Id</th>
+                    <td scope="row">@book.Name</td>
+                    <td scope="row">@book.PublishDate.ToShortDateString()</td>
+                    <td>
+                        <a class="btn btn-outline-primary" asp-controller="Person" asp-action="GetBook" asp-route-id=@book.Id>Забронировать</a>
+                    </td>                 
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn btn-outline-primary" asp-controller="Person" asp-action="Index" asp-route-id=1>Список книг</a>

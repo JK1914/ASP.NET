@@ -8,5 +8,10 @@ namespace BookStore.Extensions
         {
             return services.AddSingleton<IBookStorage, BookStorage>();
         }
+
+        public static IServiceCollection AddPersonCheck(this IServiceCollection services)
+        {
+            return services.AddSingleton<IPersonCheck, PersonCheck>();
+        }
     }
 }

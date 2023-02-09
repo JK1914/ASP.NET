@@ -1,0 +1,22 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Book";
+}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Name">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.AuthorName</h5>
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><small class="text-muted">@Model.PublishDate.ToShortDateString()</small></p>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<a class="btn btn-outline-primary" asp-controller="Person" asp-action="Index">К списку книг</a>

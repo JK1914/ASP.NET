@@ -9,6 +9,7 @@ namespace BookStore
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddBookStorage();
+            builder.Services.AddPersonCheck();
 
 
             // Add services to the container.

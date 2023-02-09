@@ -1,31 +1,27 @@
 ﻿@{
+
     ViewData["Title"] = "Home Page";
-    var books = (List<Book>)ViewData["BookCollection"]!;
+
 }
 
 <div class="text-center">
     <h1 class="display-4">BookStore</h1>
     <p><a href="https://docs.microsoft.com/aspnet/core">Welcome our BookStore</a>.</p>
+
+    <form method="post" asp-controller="Library">
+        <div class="container">
+            <div class="row justify-content-center">
+            <div class="w-25 p-3">
+                <label for="name" class="visually-hidden">Name</label>
+                <input required type="text" class="form-control" name="name" id="name" placeholder="Введите имя">                    
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mb-3">Войти</button>
+            </div>
+            </div>
+        </div>
+    
+    </form>
 </div>
-<div>
-    <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Название книги</th>
-      <th scope="col">Дата публикации</th>
-      <th scope="col">Имя автора</th>
-    </tr>
-  </thead>
-  <tbody>
-      @foreach(var book in books){
-    <tr>
-      <th scope="row">@book.Id</th>
-      <th scope="row">@book.Name</th>
-      <th scope="row">@book.PublishDate</th>
-      <th scope="row">@book.AuthorName</th> 
-    </tr>   
-      }
-  </tbody>
-</table>
-</div>
+
+

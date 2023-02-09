@@ -1,0 +1,40 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Person books";
+}
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название книги</th>
+                <th scope="col">Автор</th>
+                <th scope="col">Дата публикации</th>
+                <th scope="col">Дата возвращения</th>
+                <th scope="col">Подробно</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td scope="row">@book.Id</td>
+                    <td scope="row">@book.Name</td>
+                    <td scope="row">@book.AuthorName</td>
+                    <td scope="row">@book.PublishDate.ToShortDateString()</td>
+                    <td scope="row">@book.ReturnDate.ToShortDateString()</td>
+                    <td>
+                        <div class="justify-content-center">
+                            <a asp-action="Details"
+                           class="btn btn-outline-primary" asp-controller="Person" asp-route-id="@book.Id">Подробно</a>
+                            <a asp-action="ReturnBook"
+                           class="btn btn-outline-primary" asp-controller="Person" asp-route-id="@book.Id">Вернуть</a>
+                        </div>
+                    </td>
+                </tr>
+            }            
+        </tbody>
+    </table>
+    <a class="btn btn-outline-primary" asp-controller="Library" asp-action="Index" asp-route-id=1>В библиотеку</a>
+</div>
