@@ -15,6 +15,7 @@ namespace BookStore.Controllers
             var library = _libraryStorage.GetLibraryByName("Библиотека им. Расширения Кругозора");
             return View(library);
         }
+
         public IActionResult ReservedBook(int id) {
             var book = _libraryStorage.GetBookById(id, "Библиотека им. Расширения Кругозора");
             return View(book);
