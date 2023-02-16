@@ -1,0 +1,48 @@
+﻿@model User
+
+@{
+    @Model.Name ViewData["Title"] = "и его книги";
+}
+
+
+@*""""""""""""""""""""""""""""""""""Этот View пока не используется""""""""""""""""""""""""""""""""*@
+
+
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название книги</th>
+                <th scope="col">Автор</th>
+                <th scope="col">Дата публикации</th>                
+                <th scope="col">Дополнительно</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in @Model.BooksToRefund)
+            {
+                <tr>
+                    <td scope="row">@book.Id</td>
+                    <td scope="row">@book.Name</td>
+                    <td scope="row">@book.AuthorName</td>
+                    <td scope="row">@book.PublisherDate.ToShortDateString()</td>                    
+                    <td>
+                        <div >
+                            <form asp-action="ReservedBook" asp-controller="User" method="post">
+                                                                                                                
+                                <input type="text" hidden="hidden" readonly class="form-control-plaintext" id="userName" name="userName" value="@book.BookedBy.Name">
+                                <input type="text" hidden="hidden" readonly class="form-control-plaintext" id="bookId" name="bookId" value="@book.Id">
+                                <button type="submit" class="btn btn-outline-primary">Подробно</button>
+                                <a asp-action="ReturnBook"
+                                class="btn btn-outline-primary" asp-controller="Person" asp-route-id="@book.Id">Вернуть</a>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-primary" asp-controller="Library" asp-action="Index" asp-route-id=1>В библиотеку</a>
+</div>

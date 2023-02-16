@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Book
+
+@{
+}
+
+<div class="card" style="width: 50%; margin: 5px; border-radius: 10px; box-shadow: 0 0 10px rgb(20, 20, 20);">
+    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" style="padding: 5px; border-radius: 10px">
+    <div class="card-body">
+        <h5 class="card-title"><b>@Model.Name</b></h5>
+        <h5 class="card-title">@Model.AuthorName</h5>
+        <br>
+        <p class="card-text">@Model.Description</p> 
+    </div>
+    <div class="d-xl-flex justify-content-center">
+        <form class="row g-3" asp-action="ReserveBookPost" asp-controller="Library" method="post">
+            <div class="col-auto">
+                <label for="username" class="visually-hidden">Name</label>
+                <input type="text" class="form-control-plaintext" id="userName" name="userName" placeholder="Введите имя">
+                <input type="text" hidden="hidden" readonly class="form-control-plaintext" id="bookId" name="bookId" value="@Model.Id">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Подтвердить</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+

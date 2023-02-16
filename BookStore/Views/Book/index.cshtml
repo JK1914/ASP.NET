@@ -1,0 +1,22 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="d-flex m-3 p-2 bd-highlight">
+      @foreach (var book in Model)
+      {
+          <div class="card p-2 m-3" style="width: 18rem;">
+            <img src="@book.ImageUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+    <h5 class="card-title">@book.Name</h5>
+    <p class="card-text">@book.Description</p>
+    <p class="card-text">@book.AuthorName</p>
+    <p class="card-text">@book.PublisherDate.ToShortDateString()</p>
+    <a>Add</a>
+    <h5 class="card-title">Refund through @book.Refund days</h5>
+    
+     </div>
+    </div>
+      }
+ </div>
